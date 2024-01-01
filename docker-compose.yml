@@ -5,7 +5,7 @@ services:
     container_name: FastAPI
     build: .
     volumes:
-      - ./src:/var/www/html
+      - ./src:/src
     ports:
       - "9004:9004"
     command: uvicorn main:app --reload --host 0.0.0.0 --port 9004

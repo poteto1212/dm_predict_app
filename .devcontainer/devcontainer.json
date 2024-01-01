@@ -2,7 +2,7 @@
     "name": "Predict_API-server",
     "dockerComposeFile": "../docker-compose.yml",
     "service": "app",
-    "workspaceFolder": "/var/www/html",
+    "workspaceFolder": "/src",
     "customizations":{
         "vscode": {
             "extensions":["donjayamanne.python-extension-pack"] 
