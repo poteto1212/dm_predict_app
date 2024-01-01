@@ -1,0 +1,11 @@
+{
+    "name": "Predict_API-server",
+    "dockerComposeFile": "../docker-compose.yml",
+    "service": "app",
+    "workspaceFolder": "/var/www/html",
+    "customizations":{
+        "vscode": {
+            "extensions":["donjayamanne.python-extension-pack"] 
+        },
+    }   
+}
