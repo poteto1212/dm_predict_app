@@ -4,8 +4,8 @@ jobs:
   build_job:
     name: build
     runs-on: ubuntu-22.04
-    uses: actions/checkout@v4
     steps:
+      - uses: actions/checkout@v4
       - name: build-command
         run: |
           docker-compose build
