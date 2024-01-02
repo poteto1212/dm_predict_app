@@ -7,5 +7,11 @@ jobs:
     steps:
       - name: build-command
         run: |
-          chmod 744 ./test.sh
-          ./test.sh
+          docker-compose build
+          docker-compose up -d
+      -name: test
+        run: |
+          docker-compose run app pytest
+      -name: docker-down
+        run: |
+          docker-compose down
