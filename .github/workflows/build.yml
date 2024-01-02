@@ -9,9 +9,9 @@ jobs:
         run: |
           docker-compose build
           docker-compose up -d
-      -name: test
+      - name: test
         run: |
           docker-compose run app pytest
-      -name: docker-down
+      - name: docker-down
         run: |
           docker-compose down
