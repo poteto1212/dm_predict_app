@@ -7,5 +7,5 @@ jobs:
     steps:
       - name: build-command
         run: |
-          chmod 744 test.sh
+          chmod 744 ./test.sh
           ./test.sh
