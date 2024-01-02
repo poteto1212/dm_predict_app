@@ -1,0 +1,18 @@
+name: build
+on: [push]
+jobs:
+  build_job:
+    name: build
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: build-command
+        run: |
+          docker-compose build
+          docker-compose up -d
+      - name: test
+        run: |
+          docker-compose run app pytest
+      - name: docker-down
+        run: |
+          docker-compose down
