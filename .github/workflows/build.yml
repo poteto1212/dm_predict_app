@@ -1,0 +1,11 @@
+name: build
+on: [push]
+jobs:
+  build_job:
+    name: build
+    runs-on: ubuntu-22.04
+    steps:
+      - name: build-command
+        run: |
+          chmod 744 test.sh
+          ./test.sh

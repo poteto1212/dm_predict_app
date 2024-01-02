@@ -12,7 +12,7 @@ class Body(BaseModel):
 app = FastAPI()
 
 @app.post("/predict/")
-def read_root(body: Body):
+def predict_dm_1(body: Body):
   x_data_list = [body.bw,
                  body.fbs,
                  body.glc_3_auc,
