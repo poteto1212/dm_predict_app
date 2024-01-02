@@ -1,6 +1,11 @@
+#import設定
+import sys
+sys.path.append("../src")
+#キャッシュを作らない
+# sys.dont_write_bytecode = True
+
 from fastapi.testclient import TestClient
 from main import app,Body
-
 client = TestClient(app)
 
 #predict_dm_1のテスト
