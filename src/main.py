@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
-import predict
+from predicts.predict import Predict
+from dto.predict_dm_1_dto import Predict_dm_1_dto
 
 class Body(BaseModel):
   bw :float
@@ -13,11 +14,15 @@ app = FastAPI()
 
 @app.post("/predict/")
 def predict_dm_1(body: Body):
-  x_data_list = [body.bw,
-                 body.fbs,
-                 body.glc_3_auc,
-                 body.glc_plasma_auc,
-                 body.glc_css]
-  y_data_answer=predict.Predict.df_predict_logistic(x_data_list)
+  
+  x_data_dto = Predict_dm_1_dto(
+                bw=body.bw,
+                fbs=body.fbs,
+                glc_3_auc=body.glc_3_auc,
+                glc_plasma_auc=body.glc_plasma_auc,
+                glc_css=body.glc_css 
+                )
+
+  y_data_answer=Predict.df_predict_logistic(x_data_dto)
   
   return {"Preduct": str(y_data_answer)}
