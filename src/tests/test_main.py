@@ -3,7 +3,7 @@ import sys
 sys.path.append("../src")
 
 from fastapi.testclient import TestClient
-from main import app,Body
+from main import app
 client = TestClient(app)
 
 #predict_dm_1のテスト

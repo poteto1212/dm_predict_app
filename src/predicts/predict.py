@@ -10,7 +10,7 @@ import pandas as pd
 class Predict:
     @staticmethod
     def df_predict_logistic(x_data_dto :Predict_dm_1_dto):
-        model_path = "./learning_model/dm_predict_model.pkle"
+        model_path = "./predicts/learning_models/dm_predict_logictic_model.pkle"
         x_data_df = pd.DataFrame({
             "相対体重":[x_data_dto.load_bw()],
             "空腹時血糖":[x_data_dto.load_fbs()],

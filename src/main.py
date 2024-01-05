@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
-from predicts.predict import Predict
 from dto.predict_dm_1_dto import Predict_dm_1_dto
+from logics.predict_dm_1_logic import Predict_dm_1_logic
 
 class Body(BaseModel):
   bw :float
@@ -23,6 +23,6 @@ def predict_dm_1(body: Body):
                 glc_css=body.glc_css 
                 )
 
-  y_data_answer=Predict.df_predict_logistic(x_data_dto)
+  y_data_dto = Predict_dm_1_logic.predict_dm_1(x_data_dto=x_data_dto)
   
-  return {"Preduct": str(y_data_answer)}
+  return {"Preduct": y_data_dto.load_dm()}
