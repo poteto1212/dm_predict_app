@@ -1,10 +1,18 @@
+#DM1の目的変数オブジェクト
 class Ans_dm_1_dto:
     def __init__(self,
-                 dm: str,
+                 category: int,
 ):
-        self.dm = dm
+        self.__category = category
+        self.__dm_predict = None
 
     
-    def load_dm(self):
-        return self.dm
+    def load_category(self)->int:
+        return self.__category
+    
+    def update_dm(self,dm_predict: str):
+        self.__dm_predict = dm_predict
+    
+    def load_dm_predict(self) -> str:
+        return self.__dm_predict
     

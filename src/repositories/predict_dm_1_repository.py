@@ -13,7 +13,7 @@ class Predict_dm_1_repository:
         y_data=Predict.df_predict_logistic(x_data_dto = x_data_dto)
         #結果のデータベースへの一時保管
         #保管処理を記載する
-             
-        #オブジェクトで返す
-        y_data_dto=Ans_dm_1_dto(dm=str(y_data))
+        print(y_data)     
+        #DTOオブジェクトで返す
+        y_data_dto=Ans_dm_1_dto(category=y_data)
         return y_data_dto

@@ -12,7 +12,7 @@ class Predict:
     def df_predict_logistic(x_data_dto :Predict_dm_1_dto):
         model_path = "./predicts/learning_models/dm_predict_logictic_model.pkle"
         x_data_df = pd.DataFrame({
-            "相対体重":[x_data_dto.load_bw()],
+            "相対体重":[x_data_dto.load_rlative_bw()],
             "空腹時血糖":[x_data_dto.load_fbs()],
             "3時間血漿グルコース曲線下の面積":[x_data_dto.load_glc_3_auc()],
             "血漿インスリン曲線下面積":[x_data_dto.load_glc_plasma_auc()],

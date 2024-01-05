@@ -10,7 +10,8 @@ client = TestClient(app)
 def test_predict_dm_1():
     respose = client.post("/predict/",
                           json={
-                                "bw": 1.07,
+                                "height": 150,
+                                "bw": 50,
                                 "fbs": 112,
                                 "glc_3_auc": 500,
                                 "glc_plasma_auc": 392,
