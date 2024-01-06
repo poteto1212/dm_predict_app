@@ -10,7 +10,7 @@ def predict_dm_1(body: Predict_dm_1_request):
   
   x_data_dto = Predict_dm_1_dto(
                 height= body.height,
-                bw=body.bw,#身長受け取り
+                bw=body.bw,
                 fbs=body.fbs,
                 glc_3_auc=body.glc_3_auc,
                 glc_plasma_auc=body.glc_plasma_auc,
