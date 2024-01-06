@@ -8,7 +8,7 @@ from logics.predict_dm_1_logic import Predict_dm_1_logic
 @app.post("/predict_dm_1/")
 def predict_dm_1(body: Predict_dm_1_request):
   
-  x_data_dto = Predict_dm_1_dto(
+  predict_dm_1_dto = Predict_dm_1_dto(
                 height= body.height,
                 bw=body.bw,
                 fbs=body.fbs,
@@ -17,8 +17,8 @@ def predict_dm_1(body: Predict_dm_1_request):
                 glc_css=body.glc_css 
                 )
 
-  y_data_dto = Predict_dm_1_logic.predict_dm_1(x_data_dto=x_data_dto)
+  ans_dm_1_dto = Predict_dm_1_logic.predict_dm_1(predict_dm_1_dto=predict_dm_1_dto)
   
   return {
-    "Category":str(y_data_dto.load_category()),
-    "Preduct": y_data_dto.load_dm_predict()}
+    "predict_val":str(ans_dm_1_dto.load_predict_val()),
+    "result": ans_dm_1_dto.load_result()}

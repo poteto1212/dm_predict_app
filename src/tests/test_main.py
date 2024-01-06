@@ -22,13 +22,13 @@ def test_predict_dm_1():
     assert respose.status_code == 200
     
     #レスポンスパラメータ
-    category = respose.json()["Category"]
-    predict = respose.json()["Preduct"]
+    predict_val = respose.json()["predict_val"]
+    result = respose.json()["result"]
     
     #レスポンスの型が正しい
-    assert type(category) == str
-    assert type(predict) == str
+    assert type(predict_val) == str
+    assert type(result) == str
     
     #モデル出力と判定結果が一致している
     light_list = {"0":"糖尿病の可能性は低い","1":"糖尿病の可能性が高い"}
-    assert light_list[category] == predict
+    assert light_list[predict_val] == result
