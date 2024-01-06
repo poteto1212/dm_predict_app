@@ -1,21 +1,12 @@
-from fastapi import FastAPI
-from pydantic import BaseModel
+from fastapi import FastAPI 
+app = FastAPI()
+
+from requests.predict_dm_1_request import Predict_dm_1_request
 from dto.predict_dm_1_dto import Predict_dm_1_dto
 from logics.predict_dm_1_logic import Predict_dm_1_logic
 
-#bwではなく身長で受け取る
-class Body(BaseModel):
-  height: float
-  bw :float
-  fbs :float
-  glc_3_auc :float
-  glc_plasma_auc :float
-  glc_css :float
-  
-app = FastAPI()
-
-@app.post("/predict/")
-def predict_dm_1(body: Body):
+@app.post("/predict_dm_1/")
+def predict_dm_1(body: Predict_dm_1_request):
   
   x_data_dto = Predict_dm_1_dto(
                 height= body.height,

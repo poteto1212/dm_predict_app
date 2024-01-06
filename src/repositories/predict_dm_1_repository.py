@@ -11,9 +11,6 @@ class Predict_dm_1_repository:
     def predict_dm_1(x_data_dto: Predict_dm_1_dto)->Ans_dm_1_dto:
         #ロジスティクス回帰モデルの呼び出し
         y_data=Predict.df_predict_logistic(x_data_dto = x_data_dto)
-        #結果のデータベースへの一時保管
-        #保管処理を記載する
-        print(y_data)     
-        #DTOオブジェクトで返す
+        #TODO 結果のデータベースへの一時保管
         y_data_dto=Ans_dm_1_dto(category=y_data)
         return y_data_dto
