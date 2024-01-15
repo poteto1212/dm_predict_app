@@ -15,7 +15,7 @@ class Predict_dm_1_repository:
             relative_bw = predict_dm_1_dto.load_rlative_bw(),
             fbs = predict_dm_1_dto.load_fbs(),
             glc_3_auc = predict_dm_1_dto.load_glc_3_auc(),
-            glc_plasma_auc = predict_dm_1_dto.load_glc_plasma_auc(),
+            ins_plasma_auc = predict_dm_1_dto.load_ins_plasma_auc(),
             glc_css = predict_dm_1_dto.load_glc_css()
         )
         #TODO 結果のデータベースへの一時保管

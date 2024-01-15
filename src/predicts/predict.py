@@ -13,7 +13,7 @@ class Predict:
         relative_bw: float,
         fbs: float,
         glc_3_auc: float,
-        glc_plasma_auc: float,
+        ins_plasma_auc: float,
         glc_css: float
         
     )->int:
@@ -22,7 +22,7 @@ class Predict:
             "相対体重":[relative_bw],
             "空腹時血糖":[fbs],
             "3時間血漿グルコース曲線下の面積":[glc_3_auc],
-            "血漿インスリン曲線下面積":[glc_plasma_auc],
+            "血漿インスリン曲線下面積":[ins_plasma_auc],
             "定常状態血糖":[glc_css],      
         })
         with open(model_path, mode='rb') as fp:

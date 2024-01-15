@@ -5,13 +5,13 @@ class Predict_dm_1_dto:
                  bw: float,
                  fbs: float,
                  glc_3_auc: float,
-                 glc_plasma_auc: float,
+                 ins_plasma_auc: float,
                  glc_css: float):
         self.__height = height
         self.__bw = bw
         self.__fbs = fbs
         self.__glc_3_auc = glc_3_auc
-        self.__glc_plasma_auc = glc_plasma_auc
+        self.__ins_plasma_auc = ins_plasma_auc
         self.__glc_css = glc_css
         self.__relative_bw = 0 #相対体重の初期値はゼロ
     
@@ -27,8 +27,8 @@ class Predict_dm_1_dto:
     def load_glc_3_auc(self)->float:
         return self.__glc_3_auc
     
-    def load_glc_plasma_auc(self)->float:
-        return self.__glc_plasma_auc
+    def load_ins_plasma_auc(self)->float:
+        return self.__ins_plasma_auc
     
     def load_glc_css(self)->float:
         return self.__glc_css

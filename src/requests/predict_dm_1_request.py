@@ -5,5 +5,5 @@ class Predict_dm_1_request(BaseModel):
   bw :float
   fbs :float
   glc_3_auc :float
-  glc_plasma_auc :float
+  ins_plasma_auc :float
   glc_css :float

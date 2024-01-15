@@ -26,7 +26,7 @@ def predict_dm_1(body: Predict_dm_1_request):
                 bw=body.bw,
                 fbs=body.fbs,
                 glc_3_auc=body.glc_3_auc,
-                glc_plasma_auc=body.glc_plasma_auc,
+                ins_plasma_auc=body.ins_plasma_auc,
                 glc_css=body.glc_css 
                 )
 

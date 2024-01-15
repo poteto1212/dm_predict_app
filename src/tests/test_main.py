@@ -14,7 +14,7 @@ def test_predict_dm_1():
                                 "bw": 50,
                                 "fbs": 112,
                                 "glc_3_auc": 500,
-                                "glc_plasma_auc": 392,
+                                "ins_plasma_auc": 392,
                                 "glc_css": 253
                                 }
                           )
