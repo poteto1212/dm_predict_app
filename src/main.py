@@ -5,9 +5,10 @@ from requests.predict_dm_1_request import Predict_dm_1_request
 from dto.predict_dm_1_dto import Predict_dm_1_dto
 from logics.predict_dm_1_logic import Predict_dm_1_logic
 from starlette.middleware.cors import CORSMiddleware 
+import os
 
 origins = [
-  "http://localhost:3000"
+  os.environ['FRONT_URL']
 ]
 
 app.add_middleware(
