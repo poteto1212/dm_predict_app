@@ -12,3 +12,19 @@ services:
       - .dev_env
     command: uvicorn main:app --reload --host 0.0.0.0 --port 9004
 #TODO: Mysqlコンテナを作成する
+  mariadb:
+    image: mariadb:10.6
+    container_name: mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: Makt0112pc-49466
+      MYSQL_DATABASE: app-data
+      MYSQL_USER: poteto1212
+      MYSQL_PASSWORD: Makt0112pc-49466
+    ports:
+      - "3306:3306"
+    volumes:
+      - mariadb-data:/var/lib/mysql
+
+volumes:
+  mariadb-data:
+    driver: local

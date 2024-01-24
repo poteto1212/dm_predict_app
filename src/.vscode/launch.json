@@ -19,7 +19,8 @@
             "module": "uvicorn",
             "args": [
                 "main:app",
-                "--reload"
+                "--reload",
+                "--port=8080" //8080で開発環境起動
             ],
             "jinja": true,
             "justMyCode": true
