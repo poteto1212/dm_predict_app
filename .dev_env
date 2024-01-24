@@ -1,0 +1,3 @@
+PYTHONDONTWRITEBYTECODE=1
+FRONT_URL=http://localhost:3000
+MYSQL_URL=jdbc:mysql://<ホスト名>:<ポート番号>/<データベース名>

@@ -1,23 +1,38 @@
-from fastapi import FastAPI
-from pydantic import BaseModel
-import predict
-
-class Body(BaseModel):
-  bw :float
-  fbs :float
-  glc_3_auc :float
-  glc_plasma_auc :float
-  glc_css :float
-  
+from fastapi import FastAPI 
 app = FastAPI()
 
-@app.post("/predict/")
-def predict_dm_1(body: Body):
-  x_data_list = [body.bw,
-                 body.fbs,
-                 body.glc_3_auc,
-                 body.glc_plasma_auc,
-                 body.glc_css]
-  y_data_answer=predict.Predict.df_predict_logistic(x_data_list)
+from requests.predict_dm_1_request import Predict_dm_1_request
+from dto.predict_dm_1_dto import Predict_dm_1_dto
+from logics.predict_dm_1_logic import Predict_dm_1_logic
+from starlette.middleware.cors import CORSMiddleware 
+import os
+
+origins = [
+  os.environ['FRONT_URL']
+]
+
+app.add_middleware(
+  CORSMiddleware,
+  allow_origins=origins,
+  allow_credentials=True,   # 追記により追加
+  allow_methods=["*"],      # 追記により追加
+  allow_headers=["*"]       # 追記により追加
+)
+
+@app.post("/predict_dm_1/")
+def predict_dm_1(body: Predict_dm_1_request):
   
-  return {"Preduct": str(y_data_answer)}
+  predict_dm_1_dto = Predict_dm_1_dto(
+                height= body.height,
+                bw=body.bw,
+                fbs=body.fbs,
+                glc_3_auc=body.glc_3_auc,
+                ins_plasma_auc=body.ins_plasma_auc,
+                glc_css=body.glc_css 
+                )
+
+  ans_dm_1_dto = Predict_dm_1_logic.predict_dm_1(predict_dm_1_dto=predict_dm_1_dto)
+  
+  return {
+    "predict_val":str(ans_dm_1_dto.load_predict_val()),
+    "result": ans_dm_1_dto.load_result()}

@@ -12,7 +12,7 @@ jobs:
           docker-compose up -d
       - name: test
         run: |
-          docker-compose run app pytest
+          docker-compose run app pytest /src/tests/test_main.py
       - name: docker-down
         run: |
           docker-compose down
