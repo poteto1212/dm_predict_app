@@ -13,7 +13,8 @@ services:
     command: uvicorn main:app --reload --host 0.0.0.0 --port 9004
     networks:
       - my-network
-    network_mode: "host"
+    network_mode: 
+      - "host"
   
   mariadb:
     image: mariadb:10.6
