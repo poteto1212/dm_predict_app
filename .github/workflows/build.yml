@@ -4,7 +4,6 @@ jobs:
   build_job:
     name: build
     runs-on: ubuntu-22.04
-    services:
     steps:
       - uses: actions/checkout@v4
       - name: build-command
