@@ -4,6 +4,17 @@ jobs:
   build_job:
     name: build
     runs-on: ubuntu-22.04
+    services:
+      mariadb:
+        image: mariadb:10.6
+        env:
+          MYSQL_ROOT_PASSWORD: Makt0112pc-49466
+          MYSQL_DATABASE: app-data
+          MYSQL_USER: poteto1212
+          MYSQL_PASSWORD: Makt0112pc-49466
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
     steps:
       - uses: actions/checkout@v4
       - name: build-command
@@ -12,7 +23,6 @@ jobs:
           docker-compose up -d
       - name: mygrate
         run: |
-          docker-compose up -d
           docker-compose run app bash -c "cd db ; alembic upgrade head"
       - name: test
         run: |
