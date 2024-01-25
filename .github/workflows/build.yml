@@ -12,7 +12,7 @@ jobs:
           docker-compose up -d
       - name: mygrate
         run: |
-          docker-compose exec app bash -c "cd db ; alembic upgrade head"
+          docker-compose run app bash -c "cd db ; alembic upgrade head"
       - name: test
         run: |
           docker-compose run app pytest /src/tests/test_main.py
