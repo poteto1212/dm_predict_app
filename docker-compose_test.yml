@@ -22,8 +22,6 @@ services:
       MYSQL_PASSWORD: Makt0112pc-49466
     ports:
       - "3306:3306"
-    volumes:
-      - mariadb-data:/var/lib/mysql
     network_mode: "host"
   
   
