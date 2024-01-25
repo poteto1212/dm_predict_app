@@ -10,6 +10,9 @@ jobs:
         run: |
           docker-compose build
           docker-compose up -d
+      - name: mygrate
+        run: |
+          docker-compose run app bash -c "cd db ; alembic upgrade head"
       - name: test
         run: |
           docker-compose run app pytest /src/tests/test_main.py
