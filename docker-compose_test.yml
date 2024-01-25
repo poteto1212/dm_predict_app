@@ -9,9 +9,10 @@ services:
     ports:
       - "9004:9004"
     environment:
-      - MYSQL_URL=mysql+mysqlconnector://poteto1212:Makt0112pc-49466@localhost:3306/app-data
+      - MYSQL_URL=mysql+mysqlconnector://poteto1212:Makt0112pc-49466@172.17.0.1:3306/app-data
     command: uvicorn main:app --reload --host 0.0.0.0 --port 9004
-    network_mode: "host"
+    networks:
+      - mytest
   
   mariadb:
     image: mariadb:10.6
@@ -23,6 +24,12 @@ services:
       MYSQL_PASSWORD: Makt0112pc-49466
     ports:
       - "3306:3306"
+    networks:
+      - mytest
+
+networks:
+  mytest:
+
 
 
   
