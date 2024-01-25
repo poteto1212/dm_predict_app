@@ -9,7 +9,7 @@ services:
     ports:
       - "9004:9004"
     environment:
-      - MYSQL_URL=mysql+mysqlconnector://poteto1212:Makt0112pc-49466@host.docker.internal:3306/app-data
+      - MYSQL_URL=mysql+mysqlconnector://poteto1212:Makt0112pc-49466@mariadb:3306/app-data
     command: uvicorn main:app --reload --host 0.0.0.0 --port 9004
     networks:
       - my-network
@@ -26,8 +26,7 @@ services:
       - "3306:3306"
     networks:
       - my-network
-
-
+      
 networks:
   my-network:
   
