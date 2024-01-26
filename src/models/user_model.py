@@ -19,7 +19,7 @@ class User_model(Base):
         index=True
         )
     password = Column(
-        String(length=15)
+        String(length=70)#bcryptは60文字のハッシュを生成　
         )
     security_ask = Column(
         Integer,
