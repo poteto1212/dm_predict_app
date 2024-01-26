@@ -10,7 +10,7 @@ jobs:
         run: |
           docker-compose -f docker-compose_test.yml up -d 
       - name: Wait for MySQL to be ready
-        run: dockerize -wait tcp://172.17.0.1:3306 -timeout 1m
+        run: sleep 30s
       - name: migrate
         run: |
           docker-compose -f docker-compose_test.yml run app bash -c "cd db ; alembic upgrade head"
