@@ -9,7 +9,9 @@ jobs:
       - name: build-command
         run: |
           docker-compose -f docker-compose_test.yml up -d 
-      - name: mygrate
+      - name: Wait for MySQL to be ready
+        run: dockerize -wait tcp://172.17.0.1:3306 -timeout 1m
+      - name: migrate
         run: |
           docker-compose -f docker-compose_test.yml run app bash -c "cd db ; alembic upgrade head"
       - name: test
