@@ -1,6 +1,6 @@
 from logging.config import fileConfig
 
-from sqlalchemy import engine_from_config
+from sqlalchemy import engine_from_config,MetaData
 from sqlalchemy import pool
 
 from alembic import context
@@ -19,13 +19,26 @@ if config.config_file_name is not None:
 # for 'autogenerate' support
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
+
 import sys
 sys.path.append("../../src")
+# import settings
+# target_metadata = settings.Base.metadata
 from models.user_model import User_model
-target_metadata = [
-    User_model.metadata
-]
+from models.admin_model import Admin_model
 
+# target_metadata = [
+#     User_model.metadata, Admin_model.metadata
+# ]
+def combine_metadata(*args):
+    m = MetaData()
+    for metadata in args:
+        for t in metadata.tables.values():
+            t.tometadata(m)
+    return m
+
+# 変更
+target_metadata = combine_metadata(User_model.metadata, Admin_model.metadata)
 # other values from the config, defined by the needs of env.py,
 # can be acquired:
 # my_important_option = config.get_main_option("my_important_option")

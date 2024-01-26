@@ -1,7 +1,6 @@
 from sqlalchemy import Column, Integer, String,CheckConstraint
-from sqlalchemy.ext.declarative import declarative_base
-
-Base = declarative_base()
+from sqlalchemy.orm import relationship
+from .base_model import Base
 
 class User_model(Base):
     __tablename__ = "users"
@@ -35,3 +34,4 @@ class User_model(Base):
         Integer,
         CheckConstraint('level >= 1')
         )
+    admin = relationship("Admin_model", back_populates="user")
