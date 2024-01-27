@@ -14,12 +14,15 @@ jobs:
       - name: migrate
         run: |
           docker-compose -f docker-compose_test.yml run app bash -c "cd db ; alembic upgrade head"
-      - name: insert_seed
+      - name: insert_test_data
         run: |
-          docker-compose -f docker-compose_test.yml run app bash -c "python ./seeds/users_seed.py"
+          docker-compose -f docker-compose_test.yml run app bash -c "python ./seeds/seed.py"
       - name: test
         run: |
           docker-compose -f docker-compose_test.yml run app pytest /src/tests/test_main.py
+      - name: delete_test_dtat
+        run: |
+          docker-compose -f docker-compose_test.yml run app bash -c "python ./seeds/seed_delete.py"
       - name: docker-down
         run: |
           docker-compose -f docker-compose_test.yml down
