@@ -1,6 +1,7 @@
 from sqlalchemy import Column, Integer, String,CheckConstraint
 from sqlalchemy.orm import relationship
 from .base_model import Base
+from .admin_model import Admin_model#リレーションテーブルも明示しておく必要がある
 
 class User_model(Base):
     __tablename__ = "users"
