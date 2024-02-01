@@ -19,7 +19,7 @@ jobs:
           docker-compose -f docker-compose_test.yml run app bash -c "python ./seeds/seed.py"
       - name: test
         run: |
-          docker-compose -f docker-compose_test.yml run app pytest /src/tests/test_main.py
+          docker-compose -f docker-compose_test.yml run app pytest /src/tests/
       - name: delete_test_dtat
         run: |
           docker-compose -f docker-compose_test.yml run app bash -c "python ./seeds/seed_delete.py"
