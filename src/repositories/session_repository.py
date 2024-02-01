@@ -12,10 +12,17 @@ class Session_repository:
         
         session = sessionmaker(bind=engin)()
         
-        user_name_record,password_record = session.query(
+        records = session.query(
             User_model.user_name,
             User_model.password                      
             ).filter(User_model.user_name == user_name).one_or_none()
+        
+        if records == None:
+            user_name_record = None
+            password_record = None
+            return user_name_record,password_record
+        
+        user_name_record,password_record = records
                
         # session.commit() ←必要性検討　検索しているだけだからいらない？
         session.close()

@@ -1,3 +1,6 @@
+from fastapi import HTTPException
+import pytest
+
 import datetime
 import sys
 sys.path.append("../src")
@@ -29,4 +32,16 @@ def test_authenticate_user():
     print("ログイン日時はdatetime型")
     assert isinstance(login_session["test.admin@1212"]["last_login"],datetime.datetime)
     
-    
+    print("存在しないユーザーでログインするとエラー")
+    with pytest.raises(HTTPException) as e:
+        session_logic.authenticate_user(
+        input_usernmae="test.admin@112",
+        input_password="pass_admin"
+        )
+        
+    print("誤ったパスワードでログインするとエラー")
+    with pytest.raises(HTTPException) as e:
+        session_logic.authenticate_user(
+        input_usernmae="test.admin@1212",
+        input_password="pass_admins"
+        )

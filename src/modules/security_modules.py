@@ -9,6 +9,8 @@ class Security_modules:
     #パスワードの認証
     @staticmethod
     def check_password(plain_password :str, hashed_password :str)->bool:
-    # ハッシュ化されたパスワードと平文パスワードの比較
-        print(hashed_password)
+        
+        if hashed_password == None:
+            return False
+        
         return bcrypt.checkpw(plain_password.encode('utf-8'), bytes(hashed_password,'utf-8'))
