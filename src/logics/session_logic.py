@@ -15,8 +15,8 @@ class Session_logic:
     def __init__(self):
         self.session = {}
     #ユーザーを認証する
-    def authenticate_user(self, input_usernmae:str,input_password:str):#Jason形式で受け取るように修正
-        user_name_record,password_record = Session_repository.get_user_password(user_name=input_usernmae)#ここにjsonを流し込む
+    def authenticate_user(self, input_usernmae:str,input_password:str):
+        user_name_record,password_record = Session_repository.get_user_password(user_name=input_usernmae)
         
         check_passwood_ = Security_modules.check_password(
             plain_password = input_password,

@@ -20,14 +20,11 @@ class Session_repository:
         if records == None:
             user_name_record = None
             password_record = None
-            return user_name_record,password_record
+            return user_name_record , password_record
         
-        user_name_record,password_record = records
-               
+        user_name_record , password_record = records
+             
         # session.commit() ←必要性検討　検索しているだけだからいらない？
         session.close()
         
-        return user_name_record,password_record
-    
-# print(Session_repository.get_user_password("test.admin@1212"))
-# Session_repository.get_user_data("test.admin@1212")
+        return user_name_record , password_record
