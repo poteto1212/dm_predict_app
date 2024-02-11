@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String,CheckConstraint
-from sqlalchemy.ext.declarative import declarative_base
-
-Base = declarative_base()
+from sqlalchemy.orm import relationship
+from .base_model import Base
+from .admin_model import Admin_model#リレーションテーブルも明示しておく必要がある
 
 class User_model(Base):
     __tablename__ = "users"
@@ -19,7 +19,7 @@ class User_model(Base):
         index=True
         )
     password = Column(
-        String(length=15)
+        String(length=70)#bcryptは60文字のハッシュを生成　
         )
     security_ask = Column(
         Integer,
@@ -35,3 +35,4 @@ class User_model(Base):
         Integer,
         CheckConstraint('level >= 1')
         )
+    admin = relationship("Admin_model", back_populates="user")

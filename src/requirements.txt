@@ -9,3 +9,4 @@ httpx
 sqlalchemy
 alembic
 mysql-connector-python
+bcrypt
