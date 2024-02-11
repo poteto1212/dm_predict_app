@@ -18,7 +18,7 @@ def test_authenticate_user():
     print("ユーザー1によるログイン処理")
     #呼び出し
     user_name_record = session_logic.authenticate_user(
-        input_usernmae="test.admin@1212",
+        input_username="test.admin@1212",
         input_password="pass_admin"
     )
     
@@ -35,13 +35,13 @@ def test_authenticate_user():
     print("存在しないユーザーでログインするとエラー")
     with pytest.raises(HTTPException) as e:
         session_logic.authenticate_user(
-        input_usernmae="test.admin@112",
+        input_username="test.admin@112",
         input_password="pass_admin"
         )
         
     print("誤ったパスワードでログインするとエラー")
     with pytest.raises(HTTPException) as e:
         session_logic.authenticate_user(
-        input_usernmae="test.admin@1212",
+        input_username="test.admin@1212",
         input_password="pass_admins"
         )

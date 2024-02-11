@@ -2,6 +2,7 @@ from fastapi import FastAPI,Depends
 app = FastAPI()
 
 from requests.predict_dm_1_request import Predict_dm_1_request
+from requests.login_request import Login_request
 from dto.predict_dm_1_dto import Predict_dm_1_dto
 from logics.predict_dm_1_logic import Predict_dm_1_logic
 from starlette.middleware.cors import CORSMiddleware 
@@ -23,15 +24,23 @@ app.add_middleware(
 from logics.session_logic import Session_logic
 from fastapi.security import  HTTPBasicCredentials,HTTPBasic
 
+#アプリ起動時にインスタンス生成をしてそのまま維持する
+#サーバーを落とす事でリセットされる
 security = HTTPBasic()
 session_logic = Session_logic()
 
 #ログインAPI
 @app.post("/login")
-def login(credentials: HTTPBasicCredentials = Depends(security)):
-  user = session_logic.authenticate_user(credentials)
-  session_logic.session.update({"username": user["username"], "last_login": datetime.now()})
-  return {"message": "Login successful"}
+def login(body:  Login_request):#JSONを受け取れるようにRequestクラスを作成する
+  user = session_logic.authenticate_user(
+    input_username = body.user_name,
+    input_password = body.password
+  )
+  return {
+    "message": "Login successful",
+    "login_user": user,
+    "last_login" : session_logic.session[user]["last_login"]
+          }
 
 # ホームAPI
 @app.get("/home")
